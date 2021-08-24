@@ -112,7 +112,7 @@ void loop()
     lastSent = millis();
     timeClient.update();
     Serial.println(timeClient.getFormattedTime());
-    if (Firebase.pushFloatAsync(fbdo, "/hamsterRPMdata/" + timeClient.getFormattedTime(), rpm)) {
+    if (Firebase.setFloatAsync(fbdo, "/hamsterRPMdata/" + timeClient.getFormattedTime(), rpm)) {
       Serial.println(fbdo.dataPath());
       Serial.println(fbdo.pushName());
       Serial.println(fbdo.dataPath() + "/" + fbdo.pushName());
